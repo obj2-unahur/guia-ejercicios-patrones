@@ -5,34 +5,42 @@
 ### En una sesión de code review se detecta el siguiente código. Se pide que proponga un refactor.
 
 ```
-public class Loan {
-    [...]
-    public Loan(float notional, float outstanding,
-                int rating, Date expiry) {
-       this.strategy = new TermROC();
-       this.notional = notional;
-       this.outstanding = outstanding;
-       this.rating = rating;
-       this.expiry = expiry;
-    }
-    public Loan(float notional, float outstanding,
-                int rating, Date expiry, Date maturity) {
-        this.strategy = new TermROC();
-        this.notional = notional;
-        this.outstanding = outstanding;
-        this.rating = rating;
-        this.expiry = expiry;
-        this.maturity = maturity;
-    }
+public class Prestamo {
     
-    public Loan(CapitalStrategy strategy, float notional, float outstanding,
-                int rating, Date expiry, Date maturity) {
-        this.strategy = strategy;
-        this.notional = notional;
-        this.outstanding = outstanding;
+    private EstrategiaDeCapital estrategia;
+    private float hipoteca;
+    private float excepcional;
+    private int rating;
+    private Date expiry;
+    private Date madurez;
+
+    
+    public Prestamo(float hipoteca, float excepcional,
+                    int rating, Date expiry) {
+        this.estrategia = new SistemaFrances();
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
         this.rating = rating;
         this.expiry = expiry;
-        this.maturity = maturity;
+    }
+    public Prestamo(float hipoteca, float excepcional,
+                    int rating, Date expiry, Date madurez) {
+        this.estrategia = new SistemaFrances();
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
+        this.rating = rating;
+        this.expiry = expiry;
+        this.madurez = madurez;
+    }
+
+    public Prestamo(EstrategiaDeCapital strategy, float hipoteca, float excepcional,
+                    int rating, Date expiry, Date madurez) {
+        this.estrategia = strategy;
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
+        this.rating = rating;
+        this.expiry = expiry;
+        this.madurez = madurez;
     }
 }
 ```

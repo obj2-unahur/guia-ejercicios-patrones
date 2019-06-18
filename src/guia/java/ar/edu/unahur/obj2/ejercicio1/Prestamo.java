@@ -1,0 +1,43 @@
+package ar.edu.unahur.obj2.ejercicio1;
+
+import java.util.Date;
+
+public class Prestamo {
+
+    private EstrategiaDeCapital estrategia;
+    private float hipoteca;
+    private float excepcional;
+    private int rating;
+    private Date expiry;
+    private Date madurez;
+
+
+
+    public Prestamo(float hipoteca, float excepcional,
+                    int rating, Date expiry) {
+        this.estrategia = new SistemaFrances();
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
+        this.rating = rating;
+        this.expiry = expiry;
+    }
+    public Prestamo(float hipoteca, float excepcional,
+                    int rating, Date expiry, Date madurez) {
+        this.estrategia = new SistemaFrances();
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
+        this.rating = rating;
+        this.expiry = expiry;
+        this.madurez = madurez;
+    }
+
+    public Prestamo(EstrategiaDeCapital strategy, float hipoteca, float excepcional,
+                    int rating, Date expiry, Date madurez) {
+        this.estrategia = strategy;
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
+        this.rating = rating;
+        this.expiry = expiry;
+        this.madurez = madurez;
+    }
+}

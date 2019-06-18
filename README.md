@@ -7,32 +7,32 @@
 ```
 public class Loan {
     [...]
-    public Loan(float notional, float outstanding,
+    public Loan(float hipoteca, float excepcional,
                 int rating, Date expiry) {
        this.strategy = new TermROC();
-       this.notional = notional;
-       this.outstanding = outstanding;
+       this.hipoteca = hipoteca;
+       this.excepcional = excepcional;
        this.rating = rating;
        this.expiry = expiry;
     }
-    public Loan(float notional, float outstanding,
-                int rating, Date expiry, Date maturity) {
+    public Loan(float hipoteca, float excepcional,
+                int rating, Date expiry, Date madurez) {
         this.strategy = new TermROC();
-        this.notional = notional;
-        this.outstanding = outstanding;
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
         this.rating = rating;
         this.expiry = expiry;
-        this.maturity = maturity;
+        this.madurez = madurez;
     }
     
-    public Loan(CapitalStrategy strategy, float notional, float outstanding,
-                int rating, Date expiry, Date maturity) {
+    public Loan(CapitalStrategy strategy, float hipoteca, float excepcional,
+                int rating, Date expiry, Date madurez) {
         this.strategy = strategy;
-        this.notional = notional;
-        this.outstanding = outstanding;
+        this.hipoteca = hipoteca;
+        this.excepcional = excepcional;
         this.rating = rating;
         this.expiry = expiry;
-        this.maturity = maturity;
+        this.madurez = madurez;
     }
 }
 ```

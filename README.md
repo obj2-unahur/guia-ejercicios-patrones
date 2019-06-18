@@ -9,29 +9,30 @@ public class Loan {
     [...]
     public Loan(float notional, float outstanding,
                 int rating, Date expiry) {
- this.strategy = new TermROC();
- this.notional = notional;
- this.outstanding = outstanding;
- this.rating = rating;
- this.expiry = expiry;
+       this.strategy = new TermROC();
+       this.notional = notional;
+       this.outstanding = outstanding;
+       this.rating = rating;
+       this.expiry = expiry;
     }
     public Loan(float notional, float outstanding,
                 int rating, Date expiry, Date maturity) {
- this.strategy = new TermROC();
- this.notional = notional;
- this.outstanding = outstanding;
- this.rating = rating;
- this.expiry = expiry;
- this.maturity = maturity;
+        this.strategy = new TermROC();
+        this.notional = notional;
+        this.outstanding = outstanding;
+        this.rating = rating;
+        this.expiry = expiry;
+        this.maturity = maturity;
     }
+    
     public Loan(CapitalStrategy strategy, float notional, float outstanding,
                 int rating, Date expiry, Date maturity) {
- this.strategy = strategy;
- this.notional = notional;
- this.outstanding = outstanding;
- this.rating = rating;
- this.expiry = expiry;
- this.maturity = maturity;
+        this.strategy = strategy;
+        this.notional = notional;
+        this.outstanding = outstanding;
+        this.rating = rating;
+        this.expiry = expiry;
+        this.maturity = maturity;
     }
 }
 ```
@@ -40,10 +41,13 @@ public class Loan {
 
 Se cuenta con el siguiente diseño para el cálculo del monto máximo a entregar en un préstamo según el método de amortización. Proponga una mejora para evitar la repetición de código.
 
+![](/ejercicio2.jpeg)
 
 ## Ejercicio 3:
 
 Para un módulo de extracción de texto de markup se construyó la siguiente solución y ha pasado a revisión para mejorar el diseño. ¿Qué alternativa de diseño podría proponer para mejorar esta solución?
+
+![](/ejercicio3.jpeg)
 
 Donde el método extractText quedó como se indica:
 
@@ -51,15 +55,15 @@ Donde el método extractText quedó como se indica:
 public String extractText(Parser parser) {
     StringBuffer text = new StringBuffer();
     for (Node node : parser.nodes()) {
- if(node instanceof LinkTag) {
- extractLinkTag(node, text);
- } else if(node instanceof Tag) {
- extractTag(node, text);
- } else if(node instanceof StringNode) {
- extractStringNode(node, text);
- } else if(node instanceof ...) {
- [...]
- }
+         if(node instanceof LinkTag) {
+         extractLinkTag(node, text);
+         } else if(node instanceof Tag) {
+         extractTag(node, text);
+         } else if(node instanceof StringNode) {
+         extractStringNode(node, text);
+         } else if(node instanceof ...) {
+         [...]
+         }
     }
     return text.toString();
 }

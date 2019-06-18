@@ -47,9 +47,49 @@ public class Prestamo {
 
 ## Ejercicio 2:
 
-Se cuenta con el siguiente diseño para el cálculo del monto máximo a entregar en un préstamo según el método de amortización. Proponga una mejora para evitar la repetición de código.
+Se cuenta con el siguiente diseño para el cálculo del monto máximo a entregar en un préstamo según el método de amortización. 
 
 ![](/ejercicio1y2.png)
+
+Proponga una mejora para evitar la repetición de código:
+
+```
+public class SistemaFrances extends SistemaDeAmortizacion {
+
+    public SistemaFrances(Prestamo prestamo) {
+        super(prestamo);
+    }
+
+    @Override
+    public double capital(Prestamo prestamo) {
+        return prestamo.getCompromiso()*
+                prestamo.getPorcentajeNoUtilizado() *
+                duracion(prestamo)*
+                factorDeRiesgo();
+    }
+}
+```
+
+```
+public class SistemaAleman extends SistemaDeAmortizacion {
+
+    public SistemaAleman(Prestamo prestamo) {
+        super(prestamo);
+    }
+
+    @Override
+    public double capital(Prestamo prestamo) {
+        return prestamo.getCompromiso()*
+                duracion(prestamo)*
+                factorDeRiesgo();
+    }
+
+    @Override
+    public int duracion(Prestamo prestamo) {
+        return 360;
+    }
+}
+```
 
 ## Ejercicio 3:
 

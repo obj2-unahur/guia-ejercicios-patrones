@@ -1,0 +1,63 @@
+@startuml
+
+title __EJERCICIO1Y2's Class Diagram__\n
+
+  package ar.edu.unahur.obj2 {
+    package ar.edu.unahur.obj2.ejercicio1y2 {
+      class Prestamo {
+          - hipoteca : float
+          - excepcional : float
+          - rating : int
+          - expiry : Date
+          - madurez : Date
+          + Prestamo()
+          + Prestamo()
+          + Prestamo()
+          + getCompromiso()
+          + getPorcentajeNoUtilizado()
+      }
+    }
+  }
+  
+
+  package ar.edu.unahur.obj2 {
+    package ar.edu.unahur.obj2.ejercicio1y2 {
+      class SistemaAleman {
+          + SistemaAleman()
+          + capital()
+          + duracion()
+      }
+    }
+  }
+  
+
+  package ar.edu.unahur.obj2 {
+    package ar.edu.unahur.obj2.ejercicio1y2 {
+      abstract class SistemaDeAmortizacion {
+          + SistemaDeAmortizacion()
+          {abstract} + capital()
+          + duracion()
+          # factorDeRiesgo()
+      }
+    }
+  }
+  
+
+  package ar.edu.unahur.obj2 {
+    package ar.edu.unahur.obj2.ejercicio1y2 {
+      class SistemaFrances {
+          + SistemaFrances()
+          + capital()
+      }
+    }
+  }
+  
+
+  Prestamo o-- SistemaDeAmortizacion : estrategia
+  SistemaAleman -up-|> SistemaDeAmortizacion
+  SistemaDeAmortizacion o-- Prestamo : prestamo
+  SistemaFrances -up-|> SistemaDeAmortizacion
+
+
+
+@enduml

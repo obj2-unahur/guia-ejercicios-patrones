@@ -1,10 +1,10 @@
-package ar.edu.unahur.obj2.ejercicio1;
+package ar.edu.unahur.obj2.ejercicio1y2;
 
 import java.util.Date;
 
 public class Prestamo {
 
-    private EstrategiaDeCapital estrategia;
+    private SistemaDeAmortizacion estrategia;
     private float hipoteca;
     private float excepcional;
     private int rating;
@@ -15,7 +15,7 @@ public class Prestamo {
 
     public Prestamo(float hipoteca, float excepcional,
                     int rating, Date expiry) {
-        this.estrategia = new SistemaFrances();
+        this.estrategia = new SistemaFrances(this);
         this.hipoteca = hipoteca;
         this.excepcional = excepcional;
         this.rating = rating;
@@ -23,7 +23,7 @@ public class Prestamo {
     }
     public Prestamo(float hipoteca, float excepcional,
                     int rating, Date expiry, Date madurez) {
-        this.estrategia = new SistemaFrances();
+        this.estrategia = new SistemaFrances(this);
         this.hipoteca = hipoteca;
         this.excepcional = excepcional;
         this.rating = rating;
@@ -31,7 +31,7 @@ public class Prestamo {
         this.madurez = madurez;
     }
 
-    public Prestamo(EstrategiaDeCapital strategy, float hipoteca, float excepcional,
+    public Prestamo(SistemaDeAmortizacion strategy, float hipoteca, float excepcional,
                     int rating, Date expiry, Date madurez) {
         this.estrategia = strategy;
         this.hipoteca = hipoteca;
@@ -39,5 +39,13 @@ public class Prestamo {
         this.rating = rating;
         this.expiry = expiry;
         this.madurez = madurez;
+    }
+
+    public double getCompromiso() {
+        return hipoteca*rating;
+    }
+
+    public double getPorcentajeNoUtilizado() {
+        return excepcional*rating;
     }
 }

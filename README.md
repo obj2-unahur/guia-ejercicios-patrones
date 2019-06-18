@@ -49,7 +49,7 @@ public class Prestamo {
 
 Se cuenta con el siguiente diseño para el cálculo del monto máximo a entregar en un préstamo según el método de amortización. Proponga una mejora para evitar la repetición de código.
 
-![](/ejercicio2.jpeg)
+![](/ejercicio1y2.png)
 
 ## Ejercicio 3:
 
@@ -116,6 +116,9 @@ public class ProcesadorDeOrdenes {
 }
 
 ```
+
+![](/ejercicio4.png)
+
 
 Se solicita hacer los cambios necesarios para soportar las ventas hechas por el sitio web. La lógica para procesar una orden por el sitio es esencialmente igual a la de la venta en locales con las siguientes diferencias:
 

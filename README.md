@@ -47,9 +47,49 @@ public class Prestamo {
 
 ## Ejercicio 2:
 
-Se cuenta con el siguiente diseño para el cálculo del monto máximo a entregar en un préstamo según el método de amortización. Proponga una mejora para evitar la repetición de código.
+Se cuenta con el siguiente diseño para el cálculo del monto máximo a entregar en un préstamo según el método de amortización. 
 
-![](/ejercicio2.jpeg)
+![](/ejercicio1y2.png)
+
+Proponga una mejora para evitar la repetición de código:
+
+```
+public class SistemaFrances extends SistemaDeAmortizacion {
+
+    public SistemaFrances(Prestamo prestamo) {
+        super(prestamo);
+    }
+
+    @Override
+    public double capital(Prestamo prestamo) {
+        return prestamo.getCompromiso()*
+                prestamo.getPorcentajeNoUtilizado() *
+                duracion(prestamo)*
+                factorDeRiesgo();
+    }
+}
+```
+
+```
+public class SistemaAleman extends SistemaDeAmortizacion {
+
+    public SistemaAleman(Prestamo prestamo) {
+        super(prestamo);
+    }
+
+    @Override
+    public double capital(Prestamo prestamo) {
+        return prestamo.getCompromiso()*
+                duracion(prestamo)*
+                factorDeRiesgo();
+    }
+
+    @Override
+    public int duracion(Prestamo prestamo) {
+        return 360;
+    }
+}
+```
 
 ## Ejercicio 3:
 
@@ -116,6 +156,9 @@ public class ProcesadorDeOrdenes {
 }
 
 ```
+
+![](/ejercicio4.png)
+
 
 Se solicita hacer los cambios necesarios para soportar las ventas hechas por el sitio web. La lógica para procesar una orden por el sitio es esencialmente igual a la de la venta en locales con las siguientes diferencias:
 

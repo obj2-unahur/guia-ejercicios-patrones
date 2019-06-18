@@ -1,7 +1,5 @@
 # Guia de ejercicios de patrones
 
-## Ejercicios
-
 ## Ejercicio 1:
 
 ### En una sesión de code review se detecta el siguiente código. Se pide que proponga un refactor.

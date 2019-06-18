@@ -95,26 +95,38 @@ public class SistemaAleman extends SistemaDeAmortizacion {
 
 Para un módulo de extracción de texto de markup se construyó la siguiente solución y ha pasado a revisión para mejorar el diseño. ¿Qué alternativa de diseño podría proponer para mejorar esta solución?
 
-![](/ejercicio3.jpeg)
+![](/ejercicio3.png)
 
 Donde el método extractText quedó como se indica:
 
 ```
-public String extractText(Parser parser) {
-    StringBuffer text = new StringBuffer();
-    for (Node node : parser.nodes()) {
-         if(node instanceof LinkTag) {
-         extractLinkTag(node, text);
-         } else if(node instanceof Tag) {
-         extractTag(node, text);
-         } else if(node instanceof StringNode) {
-         extractStringNode(node, text);
-         } else if(node instanceof ...) {
-         [...]
-         }
+    public String extractText(Parser parser) {
+        StringBuffer text = new StringBuffer();
+        for (Node node : parser.nodes()) {
+            if(node instanceof LinkTag) {
+                extractLinkTag(node, text);
+            } else if(node instanceof Tag) {
+                extractTag(node, text);
+            } else if(node instanceof StringNode) {
+                extractStringNode(node, text);
+            } else {
+                throw new RuntimeException("Tipo de Nodo no soportado");
+            }
+        }
+        return text.toString();
     }
-    return text.toString();
-}
+
+    private void extractStringNode(Node node, StringBuffer text) {
+        text.append(((StringNode)node).getText());
+    }
+
+    private void extractTag(Node node, StringBuffer text) {
+        text.append(((Tag)node).getValue());
+    }
+
+    private void extractLinkTag(Node node, StringBuffer text) {
+        text.append(((LinkTag)node).getLabel());
+    }
 ```
 
 ## Ejercicio 4:
@@ -123,7 +135,7 @@ Se propone la siguiente problemática para la que debe proponer una solución us
 
 *
 Una empresa de venta de productos deportivos comenzó con mas de 80 años en el mercado y con varios locales en el país comenzó a comerciales sus productos de forma online en su propio canal de ventas.
-Quieren modificar su sistema informatica para que pueda ser utilizado en los locales a la calle como en el sitio web.
+Quieren modificar su sistema informatica para que pueda ser utilizado en los locales a la calle como en el sitio web.*
 El códido que procesa actualmente las ordenes es el siguiente:
 
 ```

@@ -11,4 +11,9 @@ public class Tag  extends Node {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String nodeName() {
+        return "Tag";
+    }
 }

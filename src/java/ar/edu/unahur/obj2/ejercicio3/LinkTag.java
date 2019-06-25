@@ -11,4 +11,9 @@ public class LinkTag extends Node {
     public String getLabel() {
         return label;
     }
+
+    @Override
+    public String nodeName() {
+        return "LinkTag";
+    }
 }

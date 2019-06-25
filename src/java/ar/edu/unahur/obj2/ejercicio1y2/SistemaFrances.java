@@ -7,10 +7,12 @@ public class SistemaFrances extends SistemaDeAmortizacion {
     }
 
     @Override
-    public double capital(Prestamo prestamo) {
-        return prestamo.getCompromiso()*
-                prestamo.getPorcentajeNoUtilizado() *
-                duracion(prestamo)*
-                factorDeRiesgo();
+    protected int duracion(Prestamo prestamo)  {
+        return 180;
+    }
+
+    @Override
+    protected boolean usaPorcentajeNoUtilizado() {
+        return true;
     }
 }

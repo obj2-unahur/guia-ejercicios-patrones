@@ -1,33 +1,20 @@
 package ar.edu.unahur.obj2.ejercicio3;
 
+import java.util.Map;
+
 public class TextExtractor {
+
+    private Map<String, NodeExtractor> extractors;
+
+    public TextExtractor(Map<String, NodeExtractor> extractors) {
+        this.extractors = extractors;
+    }
 
     public String extractText(Parser parser) {
         StringBuffer text = new StringBuffer();
-        for (Node node : parser.nodes()) {
-            if(node instanceof LinkTag) {
-                extractLinkTag(node, text);
-            } else if(node instanceof Tag) {
-                extractTag(node, text);
-            } else if(node instanceof StringNode) {
-                extractStringNode(node, text);
-            } else {
-                throw new RuntimeException("Tipo de Nodo no soportado");
-            }
-        }
+        parser.nodes().stream()
+                .forEach(n -> extractors.get(n.nodeName()).extract(n, text));
         return text.toString();
-    }
-
-    private void extractStringNode(Node node, StringBuffer text) {
-        text.append(((StringNode)node).getText());
-    }
-
-    private void extractTag(Node node, StringBuffer text) {
-        text.append(((Tag)node).getValue());
-    }
-
-    private void extractLinkTag(Node node, StringBuffer text) {
-        text.append(((LinkTag)node).getLabel());
     }
 
 }

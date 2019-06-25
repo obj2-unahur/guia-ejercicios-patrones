@@ -8,15 +8,27 @@ public abstract class SistemaDeAmortizacion {
         this.prestamo = prestamo;
     }
 
-    public abstract  double capital(Prestamo prestamo);
+    public final double capital(Prestamo prestamo) {
+        return prestamo.getCompromiso()*
+                porcentajeNoUtilizado(prestamo) *
+                duracion(prestamo)*
+                factorDeRiesgo();
+    }
 
-    public int duracion(Prestamo prestamo)  {
-        return 180;
+    protected abstract int duracion(Prestamo prestamo);
+
+    protected abstract boolean usaPorcentajeNoUtilizado();
+
+    private double porcentajeNoUtilizado(Prestamo prestamo) {
+        if (usaPorcentajeNoUtilizado()) {
+            return prestamo.getPorcentajeNoUtilizado();
+        } else {
+            return 1;
+        }
     }
 
     protected double factorDeRiesgo() {
         return 1.8;
     }
-
 
 }

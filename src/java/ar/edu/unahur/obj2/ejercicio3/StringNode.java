@@ -11,4 +11,9 @@ public class StringNode  extends Node {
     public String getText() {
         return text;
     }
+
+    @Override
+    public String nodeName() {
+        return "StringNode";
+    }
 }
